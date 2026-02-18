@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Contracts\View\View;
 
 class EmployeeController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
-        return Inertia::render('tenant/employee/Index');
+        return view('tenant.employee.index');
     }
 }

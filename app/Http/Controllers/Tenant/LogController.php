@@ -6,15 +6,14 @@ namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Tenant\LogResource;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Inertia\Response;
 use Spatie\Activitylog\Models\Activity;
 
 class LogController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request): View
     {
         $search = trim((string) $request->string('search'));
         $activityType = trim((string) $request->string('activity_type'));
@@ -74,7 +73,7 @@ class LogController extends Controller
             ->sortBy('label')
             ->values();
 
-        return Inertia::render('tenant/logs/Index', [
+        return view('tenant.logs.index', [
             'logs' => [
                 'data' => $paginator->getCollection()
                     ->map(fn (Activity $activity) => LogResource::make($activity)->resolve())

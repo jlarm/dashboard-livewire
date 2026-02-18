@@ -9,16 +9,15 @@ use App\Http\Requests\Central\DealershipCreateRequest;
 use App\Http\Resources\Central\DealershipResource;
 use App\Models\Dealership;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class DealershipController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
         $dealerships = auth()->user()->hasRole('super-admin')
             ? Dealership::query()
@@ -30,7 +29,7 @@ class DealershipController extends Controller
                 ->orderBy('name')
                 ->get();
 
-        return Inertia::render('central/dealership/Index', [
+        return view('central.dealership.index', [
             'dealerships' => DealershipResource::collection($dealerships)->resolve(),
         ]);
     }

@@ -8,7 +8,7 @@ use App\Http\Controllers\Central\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'Welcome')->name('welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Route::middleware('signed')->group(function (): void {
     Route::get('invite/{user}', [AcceptInviteController::class, 'show'])->name('invite.show');

@@ -7,7 +7,6 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rules\Password;
-use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function (): void {
     Password::defaults(fn () => Password::min(8));
@@ -16,10 +15,8 @@ beforeEach(function (): void {
 test('tenant reset password link screen can be rendered', function (): void {
     $this->get(route('dealer.password.request'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('auth/ForgotPassword')
-            ->has('status')
-        );
+        ->assertViewIs('auth.forgot-password')
+        ->assertViewHas('status');
 });
 
 test('tenant reset password link can be requested', function (): void {
@@ -47,11 +44,9 @@ test('tenant reset password screen can be rendered', function (): void {
     Notification::assertSentTo($this->consultant, ResetPassword::class, function ($notification): true {
         $this->get(route('dealer.password.reset', $notification->token))
             ->assertOk()
-            ->assertInertia(fn (Assert $page): Assert => $page
-                ->component('auth/ResetPassword')
-                ->has('token')
-                ->has('email')
-            );
+            ->assertViewIs('auth.reset-password')
+            ->assertViewHas('token')
+            ->assertViewHas('email');
 
         return true;
     });

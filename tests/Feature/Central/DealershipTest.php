@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Models\Dealership;
 use App\Models\User;
-use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function (): void {
     $this->seedRolesAndPermissions();
@@ -35,17 +34,14 @@ it('allows super-admins to see all dealerships', function (): void {
     $this->actingAs($superAdmin)
         ->get(route('dealerships.index'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('central/dealership/Index')
-            ->has('dealerships', 2)
-            ->where('dealerships.0.id', $alphaTenant->id)
-            ->where('dealerships.0.name', 'Alpha Autos')
-            ->where('dealerships.0.url', 'https://'.$alphaTenant->domain().'/dashboard')
-            ->where('dealerships.1.id', $zebraTenant->id)
-            ->where('dealerships.1.name', 'Zebra Motors')
-            ->where('dealerships.1.url', 'https://'.$zebraTenant->domain().'/dashboard')
-            ->etc()
-        );
+        ->assertViewIs('central.dealership.index')
+        ->assertViewHas('dealerships', fn ($dealerships): bool => count($dealerships) === 2
+            && $dealerships[0]['id'] === $alphaTenant->id
+            && $dealerships[0]['name'] === 'Alpha Autos'
+            && $dealerships[0]['url'] === 'https://'.$alphaTenant->domain().'/dashboard'
+            && $dealerships[1]['id'] === $zebraTenant->id
+            && $dealerships[1]['name'] === 'Zebra Motors'
+            && $dealerships[1]['url'] === 'https://'.$zebraTenant->domain().'/dashboard');
 });
 
 it('does not allow non super-admins to see all dealerships', function (): void {
@@ -70,15 +66,11 @@ it('does not allow non super-admins to see all dealerships', function (): void {
     $this->actingAs($consultant)
         ->get(route('dealerships.index'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('central/dealership/Index')
-            ->has('dealerships', 1)
-            ->where('dealerships.0.id', $visibleTenant->id)
-            ->where('dealerships.0.name', 'Visible Motors')
-            ->where('dealerships.0.url', 'https://'.$visibleTenant->domain().'/dashboard')
-            ->missing('dealerships.1')
-            ->etc()
-        );
+        ->assertViewIs('central.dealership.index')
+        ->assertViewHas('dealerships', fn ($dealerships): bool => count($dealerships) === 1
+            && $dealerships[0]['id'] === $visibleTenant->id
+            && $dealerships[0]['name'] === 'Visible Motors'
+            && $dealerships[0]['url'] === 'https://'.$visibleTenant->domain().'/dashboard');
 });
 
 it('allows consultants to create a dealership and its domain', function (): void {

@@ -5,16 +5,13 @@ declare(strict_types=1);
 use App\Models\User;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
-use Inertia\Testing\AssertableInertia as Assert;
 
 test('tenant login screen can be rendered', function (): void {
     $this->get(route('dealer.login'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('auth/Login')
-            ->has('canResetPassword')
-            ->has('canRegister')
-        );
+        ->assertViewIs('auth.login')
+        ->assertViewHas('canResetPassword')
+        ->assertViewHas('canRegister');
 });
 
 test('tenant user can authenticate', function (): void {

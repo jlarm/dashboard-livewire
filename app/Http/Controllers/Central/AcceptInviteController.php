@@ -6,17 +6,16 @@ namespace App\Http\Controllers\Central;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class AcceptInviteController extends Controller
 {
-    public function show(Request $request, ?User $user = null): Response|RedirectResponse
+    public function show(Request $request, ?User $user = null): View|RedirectResponse
     {
         if (! $user instanceof User) {
             return to_route('login');
@@ -29,7 +28,7 @@ class AcceptInviteController extends Controller
         $request->session()->put('invite.accept_user_id', $user->id);
         $request->session()->put('invite.accept_expires_at', (int) $request->query('expires', 0));
 
-        return Inertia::render('auth/AcceptInvite', [
+        return view('auth.accept-invite', [
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,

@@ -13,20 +13,19 @@ use App\Models\Course;
 use App\Models\CourseResults;
 use App\Models\Dealership;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class UserController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
         Gate::authorize('viewAny', User::class);
 
-        return Inertia::render('central/user/Index', [
+        return view('central.user.index', [
             'users' => EmployeeResource::collection(
                 User::query()
                     ->with('roles')
@@ -44,11 +43,11 @@ class UserController extends Controller
         ]);
     }
 
-    public function show(User $user): Response
+    public function show(User $user): View
     {
         Gate::authorize('view', $user);
 
-        return Inertia::render('central/user/Show', [
+        return view('central.user.show', [
             'user' => new EmployeeResource($user->load('roles'))->resolve(),
             'currentDealerships' => DealershipResource::collection(
                 $user->dealerships()->with('users')->get(),
@@ -69,11 +68,11 @@ class UserController extends Controller
         $user->dealerships()->toggle($dealership);
     }
 
-    public function openInvites(): Response
+    public function openInvites(): View
     {
         Gate::authorize('viewAny', User::class);
 
-        return Inertia::render('central/user/OpenInvites', [
+        return view('central.user.open-invites', [
             'users' => EmployeeResource::collection(
                 User::query()
                     ->with('roles')
@@ -84,11 +83,11 @@ class UserController extends Controller
         ]);
     }
 
-    public function deleted(): Response
+    public function deleted(): View
     {
         Gate::authorize('viewAny', User::class);
 
-        return Inertia::render('central/user/Deleted', [
+        return view('central.user.deleted', [
             'users' => EmployeeResource::collection(
                 User::query()
                     ->with('roles')

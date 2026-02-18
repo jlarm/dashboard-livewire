@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
-use Inertia\Inertia;
 use Override;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,13 +39,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Inertia::share([
-            'auth.user' => Inertia::once(fn () => auth()->user()
-                ? auth()->user()->load('roles')->only('id', 'name', 'email', 'roles')
-                : null),
-            'tenant.name' => Inertia::once(fn () => tenant('name')),
-        ]);
-
         JsonResource::withoutWrapping();
 
         $this->configureModels();

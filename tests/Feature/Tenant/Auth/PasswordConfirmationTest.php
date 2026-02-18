@@ -2,15 +2,11 @@
 
 declare(strict_types=1);
 
-use Inertia\Testing\AssertableInertia as Assert;
-
 test('tenant confirm password screen can be rendered', function (): void {
     $this->actingAs($this->consultant)
         ->get(route('dealer.password.confirm'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('auth/ConfirmPassword')
-        );
+        ->assertViewIs('auth.confirm-password');
 });
 
 test('tenant password confirmation requires authentication', function (): void {

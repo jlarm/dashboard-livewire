@@ -6,13 +6,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Central\DealershipResource;
 use App\Models\Dealership;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
         Gate::authorize('viewAny', Dealership::class);
 
@@ -26,7 +25,7 @@ class DashboardController extends Controller
                 ->orderBy('name')
                 ->get();
 
-        return Inertia::render('Dashboard', [
+        return view('dashboard', [
             'dealerships' => DealershipResource::collection(
                 $dealerships
             )->resolve(),

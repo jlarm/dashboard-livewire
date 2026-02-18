@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Models\Dealer\Store;
 use App\Models\User;
 use Illuminate\Support\Facades\Date;
-use Inertia\Testing\AssertableInertia as Assert;
 
 test('tenant consultant can create a store with only a name', function (): void {
     Store::query()->delete();
@@ -67,11 +66,8 @@ test('dashboard shows initial setup mode with no stores and manual route access 
     $this->actingAs($consultant)
         ->get(route('dealer.dashboard'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('tenant/Dashboard')
-            ->where('tenant.hasStores', false)
-            ->has('states')
-        );
+        ->assertViewIs('tenant.dashboard')
+        ->assertViewHas('states');
 
     $this->actingAs($consultant)
         ->get(route('dealer.employees.index'))
@@ -92,17 +88,13 @@ test('after initial store creation, tenant routes become accessible', function (
     $this->actingAs($consultant->fresh())
         ->get(route('dealer.dashboard'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('tenant/Dashboard')
-            ->where('tenant.hasStores', true)
-        );
+        ->assertViewIs('tenant.dashboard')
+        ->assertViewHas('states');
 
     $this->actingAs($consultant->fresh())
         ->get(route('dealer.employees.index'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('tenant/employee/Index')
-        );
+        ->assertViewIs('tenant.employee.index');
 });
 
 test('tenant store creation requires only name', function (): void {

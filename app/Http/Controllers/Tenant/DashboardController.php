@@ -6,14 +6,13 @@ namespace App\Http\Controllers\Tenant;
 
 use App\Enums\State;
 use App\Http\Controllers\Controller;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
-        return Inertia::render('tenant/Dashboard', [
+        return view('tenant.dashboard', [
             'states' => collect(State::cases())->map(fn (State $state): array => [
                 'value' => $state->value,
                 'label' => $state->label(),

@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\CheckStoreStatusMiddleware;
-use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\ImpersonationMiddleware;
 use App\Http\Middleware\Localization;
 use App\Http\Middleware\SecurityHeadersMiddleware;
@@ -47,10 +46,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(AppServiceProvider::HOME);
 
         $middleware->append(SecurityHeadersMiddleware::class);
-
-        $middleware->web(append: [
-            HandleInertiaRequests::class,
-        ]);
 
         $middleware->web([
             StoreIdentifierMiddleware::class,

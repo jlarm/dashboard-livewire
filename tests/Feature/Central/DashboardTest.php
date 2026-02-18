@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\User;
-use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function (): void {
     $this->seedRolesAndPermissions();
@@ -35,17 +34,14 @@ it('renders the dashboard with dealerships sorted by name', function (): void {
 
     $this->get(route('dashboard'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('Dashboard')
-            ->has('dealerships', 2)
-            ->where('dealerships.0.id', $alphaTenant->id)
-            ->where('dealerships.0.name', 'Alpha Autos')
-            ->where('dealerships.0.url', 'https://'.$alphaTenant->domain().'/dashboard')
-            ->where('dealerships.1.id', $zebraTenant->id)
-            ->where('dealerships.1.name', 'Zebra Motors')
-            ->where('dealerships.1.url', 'https://'.$zebraTenant->domain().'/dashboard')
-            ->etc()
-        );
+        ->assertViewIs('dashboard')
+        ->assertViewHas('dealerships', fn ($dealerships): bool => count($dealerships) === 2
+            && $dealerships[0]['id'] === $alphaTenant->id
+            && $dealerships[0]['name'] === 'Alpha Autos'
+            && $dealerships[0]['url'] === 'https://'.$alphaTenant->domain().'/dashboard'
+            && $dealerships[1]['id'] === $zebraTenant->id
+            && $dealerships[1]['name'] === 'Zebra Motors'
+            && $dealerships[1]['url'] === 'https://'.$zebraTenant->domain().'/dashboard');
 });
 
 it('renders only the authenticated consultants dealerships', function (): void {
@@ -70,13 +66,9 @@ it('renders only the authenticated consultants dealerships', function (): void {
 
     $this->get(route('dashboard'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('Dashboard')
-            ->has('dealerships', 1)
-            ->where('dealerships.0.id', $visibleTenant->id)
-            ->where('dealerships.0.name', 'Visible Motors')
-            ->where('dealerships.0.url', 'https://'.$visibleTenant->domain().'/dashboard')
-            ->missing('dealerships.1')
-            ->etc()
-        );
+        ->assertViewIs('dashboard')
+        ->assertViewHas('dealerships', fn ($dealerships): bool => count($dealerships) === 1
+            && $dealerships[0]['id'] === $visibleTenant->id
+            && $dealerships[0]['name'] === 'Visible Motors'
+            && $dealerships[0]['url'] === 'https://'.$visibleTenant->domain().'/dashboard');
 });
