@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Livewire\Central\Department;
+
+use App\Models\Dealer\Department;
+use App\Support\FluxToast as Notification;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use WireElements\Pro\Components\Modal\Modal;
+
+class Delete extends Modal
+{
+    public $department;
+
+    public function mount(Department $department): void
+    {
+        $this->department = $department;
+    }
+
+    public function delete()
+    {
+        $this->department->courses()->detach();
+        $this->department->delete();
+
+        Notification::make()
+            ->title('Department Deleted Successfully!')
+            ->success()
+            ->send();
+
+        return to_route('department.index');
+    }
+
+    public function render(): Factory|View
+    {
+        return view('livewire.central.department.delete');
+    }
+}

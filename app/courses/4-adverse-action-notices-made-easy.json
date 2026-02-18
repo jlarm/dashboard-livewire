@@ -1,0 +1,121 @@
+[
+    {
+        "id": 4,
+        "uuid": "279553d8-bfab-4853-8ec8-79f202eead98",
+        "name": "Adverse Action Notices Made Easy",
+        "slug": "adverse-action-notices-made-easy",
+        "department": [
+            1,
+            6
+        ],
+        "roles": [
+            6,
+            8,
+            9
+        ],
+        "slides": [
+            {
+                "title": "Adverse Action Notices",
+                "description": "<p>This course will define the role we will need to play in reference to adverse action notices!</p>"
+            },
+            {
+                "title": "FCRA – FAIR CREDIT REPORTING ACT",
+                "description": "<p>Under the Fair credit reporting act there are two conditions that require the issuance of an adverse action notice.</p><ul><li>the information provided in the credit report was the basis for denying the credit (must also provide the name and contact info of the credit reporting agency that provided the credit information).</li><li>the information provided by a third party ie: employer or landlord was the basis for denying the credit (maybe the employer made a statement that the potential customer was going to be laid off) ( potential customer would have 60 days to request the particular information given that would have caused the result).</li></ul>"
+            },
+            {
+                "title": "FCRA – FAIR CREDIT REPORTING ACT",
+                "description": "<p>There are two categories that FCRA requires to be on the adverse action notice.</p><ul><li>First they require that the name and contact information of the credit reporting agency that provided the credit report be on the notice. This would include:<ul><li>Address</li><li>Toll Free telephone number</li><li>Web address</li></ul></li></ul>"
+            },
+            {
+                "title": "FCRA – FAIR CREDIT REPORTING ACT",
+                "description": "<p>All adverse action notices must also include these disclosures</p><ul><li>The credit decision was based whole or in part on the information from the credit report.</li><li>That the credit reporting agency is unable to provide the specific reason for declination since they did not make that final decision they just provided the information.</li><li>The customer has the right to a free credit report if requested within 60 days of receiving the notice.</li><li>The customer has the right to question the accuracy and completeness of the content of their credit report.</li></ul>"
+            },
+            {
+                "title": "ECOA – EQUAL CREDIT OPPORTUNITY ACT",
+                "description": "<p>The ECOA requires the issuance of an adverse action notice whether received in person, online, or by phone under these circumstance.</p><ul><li>the dealer can not find a lending institution willing to accept the application for credit.</li><li>No lending institution is willing to accept the terms of the retail installment contract created from a spot delivery</li><li>customer rejects the counteroffer as a result of a change in terms acceptable to the lending</li></ul>"
+            },
+            {
+                "title": "ADVERSE ACTION NOTICE",
+                "description": "<p>The actual adverse action notice should be as simple as possible and should be a single page that will satisfy both rules. The resource center of ARMP has several notices that will cover all scenarios please review with your attorney before implementing.</p>"
+            },
+            {
+                "title": "WHEN TO SEND THE ADVERSE ACTION NOTICE?",
+                "description": "<p>The adverse Action notice should be sent out no later than 30 days after receiving the application but many finance institutions send it out once a decision has been made. This also applies to notice of incompleteness for any incomplete application. Counteroffers are slightly different in that they are sent out within 90 days of the counteroffer given to the customer.</p>"
+            },
+            {
+                "title": "SHOULD WE ISSUE AN ADVERSE ACTION NOTICE?",
+                "description": "<p>Any time that someone in the dealership F&I Manager, Sales Manager, General Manager, Controller, or anyone makes a decision not to send a credit statement to a lending institution and the potential customer is told that there is not a lender that would accept their credit then and adverse action letter has to be sent out by the dealership.</p>"
+            },
+            {
+                "title": "WHAT TO DO WHEN THERE IS A COUNTEROFFER?",
+                "description": "<p>When a counteroffer is given and the new terms were rejected by the potential customer, an Adverse Action notice needs to be issued. If the counteroffer is acceptable to all parties there is no need for an Adverse Action notice to be sent.</p>"
+            },
+            {
+                "title": "MULTIPLE LENDING INSTITUTIONS?",
+                "description": "<p>If the credit statement is sent to multiple lending institutions and all but one rejects the application for credit but the one lender is agreeable to the terms that were requested then there is not need for an adverse action notice.</p>"
+            },
+            {
+                "title": "POSSIBLE SCENARIOS:",
+                "description": "<p>Receive a credit statement and the bureau is ran, the credit score is less than anything that has ever been accepted by the lenders you do business with and the decision is made to not send the statement to anyone and the prospect is let go. In this scenario you must send out an adverse action notice.</p>"
+            },
+            {
+                "title": "POSSIBLE SCENARIOS:",
+                "description": "<p>You spot deliver a car and submit the application to multiple lenders and no one accepts the terms as established on the Retail Installment Contract but one agrees to the loan under modified terms and you renegotiate with the customer and they accept the new terms. You do not need to send out an Adverse Action notice. If the customer does not accept the new terms then the dealership must send out an Adverse Action Notice.</p>"
+            },
+            {
+                "title": "POSSIBLE SCENARIOS:",
+                "description": "<p>A credit statement is sent again to multiple lenders and is rejected by them except for one who agreed to extend credit to the customer under modified terms. If the dealer does not agree to the modified terms then an Adverse Action notice must be sent out by the dealer.</p>"
+            },
+            {
+                "title": "POSSIBLE SCENARIOS:",
+                "description": "<p>In conclusion the best way to look at adverse action notices is that any time the dealer makes a decision to not send the credit statement to any lender, any time the dealer decides not to accept the modified terms of a lender, or any time the credit statement is completely rejected by all lenders then an adverse action notice must be sent.</p>"
+            }
+        ],
+        "questions": [
+            {
+                "question": "If the credit statement is taken over the phone just to see if there is a chance that the applicant could get credit, we do not have to issue an adverse action notice because there was no real expectation that the credit would be accepted.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "a"
+            },
+            {
+                "question": "We do not have to send an adverse action notice if:",
+                "answers": [
+                    {
+                        "a": "The terms that were acceptable to the lender were different than the original terms requested and you spotted the car but the customer would not accept the new terms and the deal was unwound.",
+                        "b": "The customer submitted the statement through the 800 credit help line and it was sent around but was not acceptable to any lender but because it was through the bad credit 800 phone line there is no need to issue an adverse action notice.",
+                        "c": "The customer submitted the statement and we ran the bureau and found a credit score of 350 and knowing there was no way we could get financing we informed the applicant that there was nothing we could do for them and they left but because we did not submit it to any lender there is no need to issue an adverse action notice.",
+                        "d": "None of the above"
+                    }
+                ],
+                "correctAnswer": "d"
+            },
+            {
+                "question": "It is appropriate to send out adverse action letters:",
+                "answers": [
+                    {
+                        "a": "No later than 30 days after receiving the statement.",
+                        "b": "Within 90 days of any counter offer given to an applicant where the new terms were not acceptable.",
+                        "c": "Immediately upon the decision being made.",
+                        "d": "All of the above"
+                    }
+                ],
+                "correctAnswer": "d"
+            },
+            {
+                "question": "The rule that governs the issuance of adverse action notices is the Truth In Lending Act or TILA.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "b"
+            }
+        ]
+    }
+]

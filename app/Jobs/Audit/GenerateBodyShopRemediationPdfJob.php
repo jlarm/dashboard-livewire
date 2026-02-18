@@ -1,0 +1,98 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Jobs\Audit;
+
+use App\Models\Dealer\Audit\BodyShopViolationAudit;
+use Exception;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeEncrypted;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\Middleware\WithoutOverlapping;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Spatie\Browsershot\Browsershot;
+
+class GenerateBodyShopRemediationPdfJob implements ShouldBeEncrypted, ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public function __construct(
+        private readonly BodyShopViolationAudit $bodyShopViolationAudit,
+    ) {}
+
+    public function middleware(): array
+    {
+        return [new WithoutOverlapping($this->bodyShopViolationAudit)];
+    }
+
+    public function handle(): void
+    {
+        Log::info('Start generating body shop remediation pdf');
+        try {
+            $fileName = $this->createFileName();
+            $this->generatePdf($fileName);
+
+            $doPath = tenant('id').'/body-shop/'.$fileName;
+
+            $relativePath = 'temp/'.$fileName;
+
+            throw_unless(Storage::disk('local')->exists($relativePath), Exception::class, "File not found at path: {$relativePath}");
+
+            $contents = Storage::disk('local')->get($relativePath);
+
+            throw_if($contents === null, Exception::class, "Failed to retrieve contents from: {$relativePath}");
+
+            Storage::disk('armpaudits')->put($doPath, $contents);
+
+            Storage::disk('local')->delete($relativePath);
+
+            $this->bodyShopViolationAudit->update([
+                'remediation_pdf_path' => $doPath,
+            ]);
+        } catch (Exception $e) {
+            Log::error('PDF Generation Failed: '.$e->getMessage());
+        }
+    }
+
+    private function createFileName(): string
+    {
+        $dealerName = tenant('locations')
+            ? str_replace(' ', '-', $this->bodyShopViolationAudit->store->name)
+            : str_replace(' ', '-', tenant('name'));
+
+        return mb_strtolower($dealerName).'-'.now()->format('Ymd').'-body-shop-violation-audit-remediation.pdf';
+    }
+
+    private function generatePdf(string $fileName): string
+    {
+        $tempDirectory = storage_path('app/temp');
+
+        if (! file_exists($tempDirectory)) {
+            mkdir($tempDirectory, 0755, true);
+        }
+
+        $localPath = $tempDirectory.'/'.$fileName;
+
+        $html = view('dealer.audit.body-shop.pdf-view', [
+            'fileName' => $fileName,
+            'audit' => $this->bodyShopViolationAudit,
+            'remediation' => true,
+        ])->render();
+
+        Browsershot::html($html)
+            ->showBackground()
+            ->format('A4')
+            ->scale(0.75)
+            ->waitUntilNetworkIdle()
+            ->hideHeader()
+            ->hideFooter()
+            ->save($localPath);
+
+        return $localPath;
+    }
+}

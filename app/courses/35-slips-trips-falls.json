@@ -1,0 +1,180 @@
+[
+    {
+        "id": 35,
+        "uuid": "633d55f2-4e39-4dc2-9684-0a16d40f4001",
+        "name": "Slips Trips and Falls",
+        "slug": "slips-trips-and-falls",
+        "department": [
+            3,
+            4,
+            5,
+            7
+        ],
+        "roles": [
+            9,
+            10
+        ],
+        "slides": [
+            {
+                "title": "Slips, Trips, and Falls",
+                "description": "<p>At the end of this training, you will be able to:</p><p>Identify 2 requirements of OSHA's walking and working surfaces standard that apply to your workplace.</p><p>Identify common causes of slips, trips and falls (STF) within your workplace.</p><p>Evaluate your workplace for hazards associated with walking and working surfaces.</p><p>Generate ideas on how to control for these identified hazards.</p><img src=\"{{ global_asset('course-images/stf.jpg') }}\" />"
+            },
+            {
+                "title": "Injuries from Slips, Trips and Falls",
+                "description": "<div class=\\\"grid grid-cols-2 gap-5\\\"><div><p>Common Injuries:</p><ul><li>Sprains, strains</li><li>Bruises, contusions</li><li>Fractures</li><li>Abrasions, cuts</li></ul></div><div><p>Common Affected Body Parts</p><ul><li>Knee, ankle, foot</li><li>Wrist, elbow</li><li>Back</li><li>Shoulder</li><li>Hip</li><li>Head</li></ul></div></div>"
+            },
+            {
+                "title": "NIOSH’s Top 10 Hazards",
+                "description": "<ul><li>Contaminants on the Floor</li><li>Indoor Walking Surface Irregularities</li><li>Outdoor Walking Surface Irregularities</li><li>Weather Conditions: Ice and Snow</li><li>Inadequate Lighting</li><li>Stairs and Handrails</li><li>Stepstools and Ladders</li><li>Tripping Hazards: Clutter, Loose Cords, etc.</li><li>Improper Use of Floor Mats and Runners</li><li>Poor Drainage: Pipes and Drains</li></ul>"
+            },
+            {
+                "title": "Contaminants on the Floor",
+                "description": "<p>See the photos below with fluid on the floor and dry contaminants both make for slippery situations</p><div class=\\\"grid grid-cols-2 gap-5\\\" /><img src=\"{{ global_asset('course-images/floor.jpg') }}\" /></div><p>See the photos below, surfaces that are highly polished such as marble and ceramic tile can be very slippery even dry. Freshly waxed surfaces can be slippery.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/wet-floor.jpg') }}\"></div>"
+            },
+            {
+                "title": "",
+                "description": "<div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/caution-pad.jpg') }}\"><p>Wall-mounted spill pads for use by employees and visitors</p><img src=\"{{ global_asset('course-images/wf-sign.jpg') }}\"><p>Spill pads and umbrella bags for use in building entryway</p><img src=\"{{ global_asset('course-images/spill.jpg') }}\"><p>High visibility caution sign with warning sign on top or a flashing light on top could be used</p></div>"
+            },
+            {
+                "title": "Indoor Walking Surface Irregularities",
+                "description": "<p>Damaged, warped, buckled, or uneven flooring surfaces inside facilities can cause employees to stumble, trip, slip, or fall.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/floor-panel.jpg') }}\"> <img src=\"{{ global_asset('course-images/stair-chip.jpg') }}\"> <img src=\"{{ global_asset('course-images/floor-warp.jpg') }}\"> <img src=\"{{ global_asset('course-images/floor-crack.jpg') }}\"></div>"
+            },
+            {
+                "title": "Outdoor Walking Surface Irregularities",
+                "description": "<p>Poorly maintained, uneven ground, protruding structures, holes, rocks, leaves, and other debris can cause employees and/or Customers to stumble, trip, slip, or fall. Holes in grassy area between a parking lot and building. Stones and debris on walking surfaces in a parking lot . Area of sloped pavement that should be highlighted with Safety Yellow paint.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/safety-yellow.jpg') }}\"> <img src=\"{{ global_asset('course-images/grass.jpg') }}\"> <img src=\"{{ global_asset('course-images/concrete.jpg') }}\"> <img src=\"{{ global_asset('course-images/curb.jpg') }}\"></div>"
+            },
+            {
+                "title": "Prevention Solutions",
+                "description": "<p>Wheelchair accessible curb leading to building entrance is highlighted and the surface is dimpled for better visibility and traction. Highlight or mark slip and trip hazards for better visibility. Always use bright colors usually bright yellow since it is a universal color for hazards.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/lot.jpg') }}\"> <img src=\"{{ global_asset('course-images/parking-lot.jpg') }}\"></div>"
+            },
+            {
+                "title": "Weather Conditions:  Water, Ice, and Snow",
+                "description": "<p>Weather conditions can create hazardous situations which is why it is imperative that we keep up with clearing of any water, Ice, snow, or Leaves.</p><div class=\\\"grid grid-cols-3 gap-5\\\"><img src=\"{{ global_asset('course-images/snow.jpg') }}\"> <img src=\"{{ global_asset('course-images/leaves.jpg') }}\"> <img src=\"{{ global_asset('course-images/snow-trees.jpg') }}\"></div>"
+            },
+            {
+                "title": "Inadequate Lighting",
+                "description": "<div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/dark.jpg') }}\"><p>Inadequate lighting can occur in many places hallways, garages, store rooms, shops, stairwells. We need to make sure that everyone can see clearly in our work areas so they can identify any potential hazards.</p></div>"
+            },
+            {
+                "title": "Stairs and Handrails",
+                "description": "<div class=\\\"grid grid-cols-3 gap-5\\\"><img src=\"{{ global_asset('course-images/old-stairs.jpg') }}\"> <img src=\"{{ global_asset('course-images/handle.jpg') }}\"> <img src=\"{{ global_asset('course-images/rail.jpg') }}\"></div>"
+            },
+            {
+                "title": "Prevention Solutions",
+                "description": "<p>There are many different products that can placed on stairs to reduce potential slipping and usually for little money. Should always make sure that rails are secure.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/grip.jpg') }}\"> <img src=\"{{ global_asset('course-images/roll-matt.jpg') }}\"></div>"
+            },
+            {
+                "title": "Stepstools and Ladders",
+                "description": "<p>Stepstools and ladders used incorrectly can lead to serious injury should only use them as intended.</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/ladder.jpg') }}\"> <img src=\"{{ global_asset('course-images/chair.jpg') }}\"></div>"
+            },
+            {
+                "title": "OSHA Walking and Working Surfaces Standard:  Subpart D 1910.25-26:  Portable Ladders:",
+                "description": "<div class=\\\"grid grid-cols-2 gap-5\\\">   <img src=\"{{ global_asset('course-images/ladder-lean.jpg') }}\">   <p>All ladders must be inspected periodically, kept in good condition at all times, and must be free from sharp edges, splinters, oil grease, or other defects which would affect their use.</p></div>"
+            },
+            {
+                "title": "Tripping Hazards: Clutter, Loose Wires, etc.",
+                "description": "<p>Clutter can build up in storage areas, work areas, hallways, and walkways potentially leading to an STF incident. Exposed cords on the floor, stretched across walkways, and tangled near work spaces can catch an employee’s foot and lead to a trip and fall incident. Open cabinet, file, or desk drawers can cause a fall.</p><div class=\\\"grid grid-cols-3 gap-5\\\"><img src=\"{{ global_asset('course-images/fall.jpg') }}\"> <img src=\"{{ global_asset('course-images/cables.jpg') }}\"> <img src=\"{{ global_asset('course-images/sandbag.jpg') }}\"></div>"
+            },
+            {
+                "title": "Prevention Solutions",
+                "description": "<div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/chord-bag.jpg') }}\"><p>Retractable cord holder</p><img src=\"{{ global_asset('course-images/chord-tape.jpg') }}\"><p>Cords on floor partially secured with cord cover. Cover can extend over the length of the exposed cord.</p></div>"
+            },
+            {
+                "title": "Improper use of floor mats and runners:",
+                "description": "<p>Mats are used to prevent STFs to provide slip-resistant walking surfaces by absorbing liquid, and by removing dirt, debris, and liquid from shoes. Mats are only effective if properly used and maintained. Old or poorly placed mats can contribute to slips, trips, and falls</p><div class=\\\"grid grid-cols-2 gap-5\\\"><img src=\"{{ global_asset('course-images/folded-matt.jpg') }}\"> <img src=\"{{ global_asset('course-images/bent-matt.jpg') }}\"></div>"
+            },
+            {
+                "title": "Prevention Solutions",
+                "description": "<p>Install slip-resistant floors in high risk areas (entrances, hallways, and highly polished floors).</p>"
+            },
+            {
+                "title": "Poor Drainage:  Pipes and Drains",
+                "description": "<p>Drains and water pipes that are improperly aligned can cause liquid to spill onto walking surfaces, while clogged drains can cause water to back up onto the floor.</p>"
+            },
+            {
+                "title": "Human Factors Leading to Slips Trips and Falls",
+                "description": "<p>Drains and water pipes that are improperly aligned can cause liquid to spill onto walking surfaces, while clogged drains can cause water to back up onto the floor.</p>"
+            },
+            {
+                "title": "OSHA Walking and Working Surfaces Standard:  Subpart D 1910.22:  Housekeeping",
+                "description": "<p>Good housekeeping includes picking up, wiping up, and cleaning up. Requires that all places of employment, passageways, storerooms, and service rooms shall be kept clean and orderly and in a sanitary condition.</p>"
+            },
+            {
+                "title": "Maintaining Work Areas",
+                "description": "<p>Aisles and passageways must be kept clear and in good repair and include safe clearances for mechanical equipment and contain no obstructions that could create a hazard.</p>"
+            },
+            {
+                "title": "Prevention Strategies",
+                "description": "<p>Develop and maintain a written housekeeping program.</p><p>The program might ideally describe:</p><ul><li>How to immediately report STF hazards</li><li>Where and how cleaning materials and products are stored</li><li>When to use wet floor signs and barriers and where signs are stored</li><li>What cleaning methods are appropriate for different areas and surfaces</li></ul>"
+            },
+            {
+                "title": "Tools for STF Prevention",
+                "description": "<p>Examine Employee STF Injuries</p><p>STF Checklist</p><p>Employee Communication: Training and Involvement</p>"
+            },
+            {
+                "title": "Examine Employee STF Injuries",
+                "description": "<p>Review OSHA logs for STF incidents</p><p>Review incident reports</p><p>Check for “hot spots”</p><p>Investigate incidents to find the circumstances to see where prevention measures can be implemented.</p>"
+            },
+            {
+                "title": "STF Checklist",
+                "description": "<p>Check for hazards on a regular basis</p><p>Take pictures!</p><p>Have a clear reporting procedure to get things addressed</p>"
+            },
+            {
+                "title": "Communication:  Training and Involvement",
+                "description": "<p>All employees are at risk, therefore all employees should be trained on how to recognize STF hazards, and be involved in the development and implementation of prevention strategies.</p>"
+            }
+        ],
+        "questions": [
+            {
+                "question": "The most common injuries from STFs are sprains, strains, bruises, fractures, abrasions, and cuts.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "a"
+            },
+            {
+                "question": "Inadequate lighting is one of the top ten causes of Slip's, Trip’s and fall’s.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "a"
+            },
+            {
+                "question": "Most places of business don’t have to worry about STFs only plants and construction sites.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "b"
+            },
+            {
+                "question": "Ladders are simple tools and do not need to be inspected regularly they either are working or not.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "b"
+            },
+            {
+                "question": "There is a human element to STFs that all employees need to be aware of.",
+                "answers": [
+                    {
+                        "a": "True",
+                        "b": "False"
+                    }
+                ],
+                "correctAnswer": "a"
+            }
+        ]
+    }
+]

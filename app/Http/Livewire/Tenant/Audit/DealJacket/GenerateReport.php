@@ -1,0 +1,46 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Livewire\Tenant\Audit\DealJacket;
+
+use App\Jobs\Audit\GenerateDealJacketReportJob;
+use App\Models\Dealer\Audit\DealJacketGroup;
+use Illuminate\View\View;
+use WireElements\Pro\Components\Modal\Modal;
+
+class GenerateReport extends Modal
+{
+    public int $dealJacketGroupId;
+    public DealJacketGroup $dealJacketGroup;
+    public bool $generating = false;
+
+    public function mount(): void
+    {
+        $this->dealJacketGroup = DealJacketGroup::with(['dealJackets.user', 'store'])
+            ->withCount('dealJackets')
+            ->withSum('dealJackets as total_passed', 'total_passed')
+            ->withSum('dealJackets as total_failed', 'total_failed')
+            ->findOrFail($this->dealJacketGroupId);
+    }
+
+    public function generate(): void
+    {
+        if (! $this->dealJacketGroup->completed) {
+            $this->addError('generation', 'The deal jacket group must be completed before generating a report.');
+
+            return;
+        }
+
+        $this->generating = true;
+
+        dispatch(new GenerateDealJacketReportJob($this->dealJacketGroup, auth()->user()));
+
+        $this->close();
+    }
+
+    public function render(): View
+    {
+        return view('livewire.tenant.audit.deal-jacket.generate-report');
+    }
+}

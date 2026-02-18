@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('contract_statuses', function (Blueprint $table): void {
+            $table->id();
+            $table->foreignId('contract_id');
+            $table->string('name');
+            $table->string('status');
+            $table->integer('step')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('contract_statuses');
+    }
+};

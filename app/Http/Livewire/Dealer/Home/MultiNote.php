@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Livewire\Dealer\Home;
+
+use App\Models\Dealer\Store;
+use App\Support\FluxToast as Notification;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
+
+class MultiNote extends Component
+{
+    public Store $store;
+    public $note;
+
+    public function mount(): void
+    {
+        $this->note = $this->store->note;
+    }
+
+    public function update(): void
+    {
+        $this->store->update([
+            'note' => $this->note,
+        ]);
+
+        Notification::make()
+            ->title('Note Updated Successfully!')
+            ->success()
+            ->send();
+    }
+
+    public function render(): Factory|View
+    {
+        return view('livewire.dealer.home.multi-note');
+    }
+}

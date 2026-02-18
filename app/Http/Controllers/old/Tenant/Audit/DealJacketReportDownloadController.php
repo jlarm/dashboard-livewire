@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\Tenant\Audit;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+
+class DealJacketReportDownloadController extends Controller
+{
+    public function download(string $fileName): StreamedResponse|Response
+    {
+        $filePath = "deal-jacket-reports/{$fileName}";
+
+        abort_unless(Storage::exists($filePath), 404, 'Report not found or has expired.');
+
+        return Storage::response($filePath, $fileName, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$fileName.'"',
+        ]);
+    }
+}

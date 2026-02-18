@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Observers\old;
+
+use App\Models\Dealer\Audit\DealJacket;
+use Illuminate\Support\Str;
+
+class DealJacketObserver
+{
+    public function creating(DealJacket $dealJacket): void
+    {
+        $dealJacket->uuid = (string) Str::uuid();
+    }
+}

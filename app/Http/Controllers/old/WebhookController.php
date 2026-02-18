@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Models\Dealer\PhishingCampaign;
+use App\Models\Dealer\Timeline;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class WebhookController extends Controller
+{
+    public function gophish(Request $request): JsonResponse
+    {
+        $campaign = PhishingCampaign::query()->where('campaign_id', $request->input('campaign_id'))->first();
+
+        Timeline::query()->create([
+            'phishing_campaign_id' => $campaign->id,
+            'email' => $request->input('email'),
+            'time' => $request->input('time'),
+            'message' => $request->input('message'),
+            'details' => $request->input('details'),
+        ]);
+
+        match ($request->input('message')) {
+            'Email Sent' => $campaign->increment('emails_sent'),
+            'Email Opened' => $campaign->increment('emails_opened'),
+            'Clicked Link' => $campaign->increment('links_clicked'),
+            'Submitted Data' => $campaign->increment('data_submitted'),
+            'Email Reported' => $campaign->increment('emails_reported'),
+        };
+
+        return response()->json(['status' => 'success']);
+    }
+}

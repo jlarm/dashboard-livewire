@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Override;
+
+class CourseUser extends Pivot
+{
+    public $incrementing = false;
+    protected $table = 'course_user';
+    protected $primaryKey = ['user_id', 'course_id'];
+    protected $fillable = ['user_id', 'course_id', 'type', 'assigned_by'];
+
+    #[Override]
+    protected function setKeysForSaveQuery($query): Builder
+    {
+        $keys = $this->getKeyName();
+        if (! is_array($keys)) {
+            return parent::setKeysForSaveQuery($query);
+        }
+
+        foreach ($keys as $keyName) {
+            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
+        }
+
+        return $query;
+    }
+
+    #[Override]
+    protected function getKeyForSaveQuery(?string $keyName = null): mixed
+    {
+        if (is_null($keyName)) {
+            $keyName = $this->getKeyName();
+        }
+
+        return $this->original[$keyName] ?? $this->getAttribute($keyName);
+    }
+}
