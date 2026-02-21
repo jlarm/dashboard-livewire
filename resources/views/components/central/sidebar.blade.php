@@ -9,11 +9,5 @@
 
     <flux:sidebar.spacer />
 
-    <x-central.secondary-navigation />
-
-    <flux:dropdown position="top" align="start" class="max-lg:hidden">
-        <flux:sidebar.profile avatar="/img/demo/user.png" name="Olivia Martin" />
-
-        <x-central.user-navigation />
-    </flux:dropdown>
+    <x-central.user-navigation />
 </flux:sidebar>

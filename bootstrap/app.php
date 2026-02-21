@@ -1,15 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
-use App\Http\Middleware\CheckStoreStatusMiddleware;
 use App\Http\Middleware\ImpersonationMiddleware;
 use App\Http\Middleware\Localization;
 use App\Http\Middleware\SecurityHeadersMiddleware;
-use App\Http\Middleware\SingleStoreMiddleware;
-use App\Http\Middleware\StoreAccessMiddleware;
-use App\Http\Middleware\StoreIdentifierMiddleware;
-use App\Http\Middleware\StoreMiddleware;
 use App\Providers\AppServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -48,7 +42,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(SecurityHeadersMiddleware::class);
 
         $middleware->web([
-            StoreIdentifierMiddleware::class,
             Localization::class,
             ImpersonationMiddleware::class,
         ]);
@@ -60,13 +53,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->alias([
-            'canAccessStore' => StoreAccessMiddleware::class,
-            'has.stores' => CheckStoreStatusMiddleware::class,
             'permission' => PermissionMiddleware::class,
             'role' => RoleMiddleware::class,
             'role_or_permission' => RoleOrPermissionMiddleware::class,
-            'single.store' => SingleStoreMiddleware::class,
-            'stores' => StoreMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

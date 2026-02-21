@@ -10,5 +10,4 @@ return [
     App\Providers\StoreServiceProvider::class,
     App\Providers\TelescopeServiceProvider::class,
     App\Providers\TenancyServiceProvider::class,
-    App\Providers\VaporUiServiceProvider::class,
 ];

@@ -1,10 +1,11 @@
-<flux:menu>
-    <flux:menu.radio.group>
-        <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-        <flux:menu.radio>Truly Delta</flux:menu.radio>
-    </flux:menu.radio.group>
+<flux:dropdown position="top" align="start" class="max-lg:hidden">
+    <flux:sidebar.profile :name="auth()->user()->name" />
 
-    <flux:menu.separator />
+    <flux:menu>
+        <flux:sidebar.item icon="cog-6-tooth" :href="route('profile.edit')">Profile</flux:sidebar.item>
 
-    <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
-</flux:menu>
+        <flux:menu.separator />
+
+        <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
+    </flux:menu>
+</flux:dropdown>

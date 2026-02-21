@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Profile Settings')
-
-@section('content')
+<x-app-layout>
     <h1 class="text-2xl font-semibold">Profile</h1>
 
     <form method="POST" action="{{ route('profile.update') }}" class="mt-6 space-y-4 rounded border bg-white p-4">
@@ -31,4 +27,4 @@
         </div>
         <button type="submit" class="mt-3 rounded bg-red-700 px-4 py-2 text-white">Delete account</button>
     </form>
-@endsection
+</x-app-layout>
