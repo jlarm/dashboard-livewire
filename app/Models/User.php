@@ -34,8 +34,8 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasFactory,
-        LogsActivity,
         HasRoles,
+        LogsActivity,
         Notifiable,
         SoftDeletes;
 

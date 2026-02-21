@@ -15,10 +15,10 @@ class LogController extends Controller
 {
     public function index(Request $request): View
     {
-        $search = trim((string) $request->string('search'));
-        $activityType = trim((string) $request->string('activity_type'));
-        $modelType = trim((string) $request->string('model_type'));
-        $userId = trim((string) $request->string('user_id'));
+        $search = mb_trim((string) $request->string('search'));
+        $activityType = mb_trim((string) $request->string('activity_type'));
+        $modelType = mb_trim((string) $request->string('model_type'));
+        $userId = mb_trim((string) $request->string('user_id'));
 
         $paginator = Activity::query()
             ->with('causer')
@@ -28,11 +28,11 @@ class LogController extends Controller
             ->when($search !== '', function (Builder $query) use ($search): void {
                 $query->where(function (Builder $nestedQuery) use ($search): void {
                     $nestedQuery
-                        ->where('event', 'like', '%' . $search . '%')
-                        ->orWhere('subject_type', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%')
+                        ->where('event', 'like', '%'.$search.'%')
+                        ->orWhere('subject_type', 'like', '%'.$search.'%')
+                        ->orWhere('description', 'like', '%'.$search.'%')
                         ->orWhereHas('causer', function (Builder $causerQuery) use ($search): void {
-                            $causerQuery->where('name', 'like', '%' . $search . '%');
+                            $causerQuery->where('name', 'like', '%'.$search.'%');
                         });
                 });
             })

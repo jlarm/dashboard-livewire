@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
-use App\Policies\Central\UserPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Gate;
@@ -51,7 +50,6 @@ class AppServiceProvider extends ServiceProvider
     public function bootAuth(): void
     {
 
-        Gate::policy(User::class, UserPolicy::class);
         Gate::define('superAdmin', fn (User $user): bool => $user->hasRole('super-admin'));
         Gate::before(fn ($user, $ability): ?true => $user->hasRole('super-admin') ? true : null);
 
