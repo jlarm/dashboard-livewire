@@ -15,13 +15,12 @@ Route::middleware('signed')->group(function (): void {
 });
 Route::post('invite/{user}', [AcceptInviteController::class, 'store'])->name('invite.store');
 
-Route::middleware(['auth', 'verified'])->group(function (): void {
-    Route::get('dashboard', [DashboardController::class, 'index'])
-        ->middleware('role:super-admin|Consultant')
-        ->name('dashboard');
+Route::middleware(['auth', 'verified', 'role:super-admin|Consultant'])->group(function (): void {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware('can:viewAny,App\Models\User')->group(function (): void {
-        Route::get('employees', [UserController::class, 'index'])->name('employees.index');
+        Route::view('employees', 'central.employee.index')->name('employees.index');
+        //        Route::get('employees', [UserController::class, 'index'])->name('employees.index');
         Route::get('employees/open-invites', [UserController::class, 'openInvites'])->name('employees.open-invites');
         Route::get('employees/deleted', [UserController::class, 'deleted'])->name('employees.deleted');
         Route::get('employees/{user:slug}', [UserController::class, 'show'])->name('employees.show');

@@ -1,4 +1,0 @@
-<div>
-    @livewireScripts
-    @fluxScripts
-</div>

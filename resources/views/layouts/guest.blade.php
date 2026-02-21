@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <x-head />
+    @include('components.partials.head')
 </head>
 <body class="antialiased">
     <div>
