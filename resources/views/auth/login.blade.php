@@ -1,33 +1,36 @@
-@extends('layouts.app')
+<x-guest-layout>
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="w-md">
+            <flux:card class="space-y-6">
+                <div>
+                    <flux:heading size="lg">Log in to your account</flux:heading>
+                    <flux:text class="mt-2">Welcome back!</flux:text>
+                </div>
 
-@section('title', 'Login')
+                <form method="post" action="{{ route('login.store') }}" class="space-y-6">
+                    @csrf
+                    <div class="space-y-6">
+                        <flux:field>
+                            <flux:label>Email address</flux:label>
+                            <flux:input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus />
+                            <flux:error name="email" />
+                        </flux:field>
 
-@section('content')
-    <h1 class="text-2xl font-semibold">Login</h1>
+                        <flux:field>
+                            <div class="flex justify-between">
+                                <flux:label>Password</flux:label>
+                                <flux:link wire:navigate variant="subtle" href="{{ route('password.request') }}" class="text-sm">Forgot password?</flux:link>
+                            </div>
+                            <flux:input id="password" name="password" type="password" required />
+                            <flux:error name="password" />
+                        </flux:field>
 
-    <form method="POST" action="{{ route('login.store') }}" class="mt-6 space-y-4 rounded border bg-white p-4">
-        @csrf
-        <div>
-            <label for="email" class="block text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus class="mt-1 w-full rounded border p-2">
+                        <flux:checkbox name="remember" label="Remember me" />
+                    </div>
+
+                    <flux:button type="submit" variant="primary" class="w-full">Log in</flux:button>
+                </form>
+            </flux:card>
         </div>
-
-        <div>
-            <label for="password" class="block text-sm font-medium">Password</label>
-            <input id="password" name="password" type="password" required class="mt-1 w-full rounded border p-2">
-        </div>
-
-        <label class="inline-flex items-center gap-2 text-sm">
-            <input type="checkbox" name="remember">
-            <span>Remember me</span>
-        </label>
-
-        <button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Sign in</button>
-
-        <div class="text-sm">
-            @if (!empty($canResetPassword))
-                <a href="{{ route('password.request') }}" class="text-blue-700 underline">Forgot password?</a>
-            @endif
-        </div>
-    </form>
-@endsection
+    </div>
+</x-guest-layout>
